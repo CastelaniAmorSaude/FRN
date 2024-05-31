@@ -7,15 +7,14 @@ Cypress.Commands.add('telaLogin', () => {
 }) 
 
 Cypress.Commands.add('login', () => {
-  
     cy.visit('/')    
-    cy.get("#E-mail").type(user); 
-    cy.get("#Senha").type(password, {log: false});
-    cy.get("#login").click();
-    cy.get("#Unidade").type("Unidade Teste{enter}");
-    cy.get("#EntrarUnidade").click();
-  
- // cy.session(user, login)
+    cy.get("#E-mail").type(user)
+    cy.get("#Senha").type(password, {log: false})
+    cy.get("#login").click()
+    cy.get("#Unidade").type("Unidade Teste{enter}")
+    cy.get("#EntrarUnidade").click()
+    cy.contains('span', 'staging')
+  // cy.session(user, login)
 })
 
 
