@@ -58,3 +58,5 @@ describe('telemedicinaAmei', () => {
     cadastroProfissionais()
   });
 })
+
+//span[@class="mat-button-wrapper"][contains(.,"close")]
