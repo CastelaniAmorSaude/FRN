@@ -11,29 +11,33 @@ Cypress.Commands.add('login', (
   password = Cypress.env('user_password_Admin')) => {
     cy.session([user, password], () => {
     cy.visit(Cypress.env('url_stag'))
-    cy.get('body').then($body => {
-      if ($body.find('#swal2-title').length > 0) { //Avalia se o modal de erro de permissão existe
-          cy.get('#swal2-title').then($header => {
-            if($header.is(':visible'))             //Verifica se o botão existe e está visível
-            cy.contains('button', 'Ok').click()
-            cy.get("#E-mail").type(user)
-            cy.get("#Senha").type(password)
-            cy.get("#login").click()
-            cy.get("#Unidade").type("Unidade Teste{enter}")
-            cy.get("#EntrarUnidade").click()
-            cy.get('#schedule').click()
-            cy.url().should('contain', '/schedule/schedule-appointment')        
-          })
-      } else {
-          cy.get("#E-mail").type(user)
-          cy.get("#Senha").type(password)
-          cy.get("#login").click()
-          cy.get("#Unidade").type("Unidade Teste{enter}")
-          cy.get("#EntrarUnidade").click()
-          cy.get('#schedule').click()
-          cy.url().should('contain', '/schedule/schedule-appointment')
-        }
-    })  
+      cy.get("#E-mail").type(user)
+      cy.get("#Senha").type(password, {log:false})
+      cy.get("#login").click()
+      cy.get("#Unidade").type("Unidade Teste{enter}")
+      cy.get("#EntrarUnidade").click()
+      cy.get('#schedule').click()
+      cy.url().should('contain', '/schedule/schedule-appointment')
+    })
+  })  
+
+
+
+Cypress.Commands.add('validarPermissao', () => {
+  cy.get('body').then($body => {
+    if ($body.find('#swal2-title').length > 0) { //Avalia se o modal de erro de permissão existe
+      cy.get('#swal2-title').then($header => {
+        if($header.is(':visible'))             //Verifica se o botão existe e está visível
+        cy.contains('button', 'Ok').click()
+        cy.get("#E-mail").type(user)
+        cy.get("#Senha").type(password)
+        cy.get("#login").click()
+        cy.get("#Unidade").type("Unidade Teste{enter}")
+        cy.get("#EntrarUnidade").click()
+        cy.get('#schedule').click()
+        cy.url().should('contain', '/schedule/schedule-appointment')        
+      })
+    } 
   })
 })
 

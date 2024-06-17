@@ -6,7 +6,6 @@ module.exports = defineConfig({
     viewportHeight: 800,
     setupNodeEvents(on, config) {},    
     baseUrl: 'https://amei-staging.amorsaude.com.br',
-    defaultCommandTimeout: 8000,
-    experimentalSessionSupport: true
+    defaultCommandTimeout: 12000,    
   },
 });
