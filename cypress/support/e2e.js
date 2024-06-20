@@ -17,6 +17,7 @@
 import './commands'
 import './comandosDeAcesso'
 import './comandosCaixa'
+import './comandosAgendamento'
 require('cypress-xpath')
 
 // Alternatively you can use CommonJS syntax:

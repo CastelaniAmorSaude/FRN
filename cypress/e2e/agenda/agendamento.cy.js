@@ -1,9 +1,17 @@
 /// <reference types="Cypress"/>
+
+describe('FRN - Validação Agendamento ', () => {
+  cy.slotVazio()
+  cy.agendamento()
+  
+});
+
 describe('FRN - Validação função Cashback', () => {
     beforeEach(() => {
         cy.login()
         cy.visit('/schedule/schedule-appointment?especialidadeId=616&profissionalId=1958')
     });
+    
     it('Interceptando API cashback para ter o timeout', () => {
         cy.intercept(
           'GET',
